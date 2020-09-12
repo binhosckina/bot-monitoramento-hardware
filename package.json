@@ -2,8 +2,9 @@
   "name": "bot-monitoramento-hardware",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "jest"
   },
   "repository": {
@@ -19,5 +20,9 @@
   "devDependencies": {
     "eslint": "^7.8.1",
     "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "x-ray": "^2.3.4"
   }
 }
