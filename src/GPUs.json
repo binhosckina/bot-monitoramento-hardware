@@ -1,0 +1,18 @@
+[
+  {
+    "id": 0,
+    "GPU": "2060",
+    "modelos": [
+      {
+        "marca": "Gigabyte",
+        "nome": "",
+        "links": [
+          {
+            "loja": "Kabum",
+            "link": "https://www.kabum.com.br/produto/110507/"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -13,7 +13,6 @@ function botFactory(store, url) {
   }
 
   function execute() {
-    console.log(url)
     return x(url, scope, selector)
   }
 
