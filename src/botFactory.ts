@@ -3,7 +3,7 @@ import { KabumBot } from "./model/KabomBot";
 
 var Xray = require('x-ray')
 
-export const botFactory = (store: string): Bot => {
+export const BotFactory = (store: string): Bot => {
   var bot: Bot;
   const x = Xray();
 

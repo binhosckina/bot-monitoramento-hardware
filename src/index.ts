@@ -1,10 +1,34 @@
-var { botFactory } = require("./botFactory");
-import { Bot } from "./model/Bot";
-// import { botFactory } from "./botFactory";
+require('dotenv').config()
+import "reflect-metadata";
+import { MongoHelper } from './db/mongodb/mongo-helper'
+import { MonitoringTool } from "./MonitoringTool";
 
-const bot: Bot = botFactory('Kabum')
-bot.execute('https://www.kabum.com.br/produto/96491/cooler-para-processador-cooler-master-intel-amd-masterair-ma410p-map-t4pn-220pc-r1')
-// .write('results.json')
-.then(res => {
-  console.log(res)
+MongoHelper.connect()
+.then(async () => {
+  const monitoringTool = new MonitoringTool();
+  monitoringTool.start();
 })
+.catch(console.error)
+
+
+
+// import { createConnection } from "typeorm";
+// import { User } from "./entity/User";
+
+// createConnection().then(async connection => {
+
+//     console.log("Inserting a new user into the database...");
+//     const user = new User();
+//     user.firstName = "Timber";
+//     user.lastName = "Saw";
+//     user.age = 25;
+//     await connection.manager.save(user);
+//     console.log("Saved a new user with id: " + user.id);
+
+//     console.log("Loading users from the database...");
+//     const users = await connection.manager.find(User);
+//     console.log("Loaded users: ", users);
+
+//     console.log("Here you can setup and run express/koa/any other framework.");
+
+// }).catch(error => console.log(error));
