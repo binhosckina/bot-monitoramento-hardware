@@ -1,4 +1,4 @@
-import { GPU } from "@/entities/gpu"
+import { GPU } from "../entities/gpu"
 import { EntityRepository, Repository } from "typeorm"
 
 

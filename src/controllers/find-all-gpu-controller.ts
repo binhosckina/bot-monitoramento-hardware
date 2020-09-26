@@ -1,17 +1,17 @@
-import { GPU } from "@/entities/gpu";
-import { HttpRequest } from "@/interfaces/http-request"
-import { HttpResponse } from "@/interfaces/http-response"
-import { GpuRepository } from "@/repositories/gpu-repository"
+import { ok } from "../interfaces/response-types";
+import { GPU } from "../entities/gpu";
+import { Controller } from "../interfaces/controller";
+import { Request } from "../interfaces/request"
+import { Response } from "../interfaces/response"
 // import { Controller, HttpRequest, HttpResponse, Validation, AddSurvey } from './add-survey-controller-protocols'
 // import { badRequest, serverError, noContent } from '@/presentation/helpers/http/http-helper'
 
-export class AddGpuController {
+export class FindAllGpuController implements Controller {
   constructor (
     // private readonly validation: Validation,
-    private readonly repository: GpuRepository
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle (request: Request): Promise<Response> {
     try {
       // const error = this.validation.validate(httpRequest.body)
       // if (error) {
@@ -19,11 +19,11 @@ export class AddGpuController {
       //   return error
       // }
       // const { question, answers } = httpRequest.body
-      let gpu = new GPU(httpRequest.body.question)
 
-      await this.repository.add(gpu)
-      // return noContent()
-      return null
+      // await this.repository.add(gpu)
+      let data = await GPU.find()
+
+      return ok(data)
     } catch (error) {
       // return serverError(error)
       return error
