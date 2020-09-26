@@ -1,12 +1,18 @@
 require('dotenv').config()
 import "reflect-metadata";
-import { MongoHelper } from './db/mongodb/mongo-helper'
-import { MonitoringTool } from "./MonitoringTool";
+import { MongoAdapter } from "./adapters/typeorm-mongo-adapter";
+// import { MongoHelper } from './db/mongodb/mongo-helper'
+// import { MonitoringTool } from "./MonitoringTool";
 
-MongoHelper.connect()
+const port = process.env.SERVER_PORT || 3001
+
+MongoAdapter.connect()
 .then(async () => {
-  const monitoringTool = new MonitoringTool();
-  monitoringTool.start();
+  const app = (await import('./config/app')).default
+  app.listen(port, () => console.log(`Server running at http://localhost:${port}`))
+
+  // const monitoringTool = new MonitoringTool();
+  // monitoringTool.start();
 })
 .catch(console.error)
 

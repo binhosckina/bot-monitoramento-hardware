@@ -1,5 +1,5 @@
 import { Connection, createConnection } from "typeorm";
-import connection from "../../config/db-connection";
+import connection from "../config/db-connection";
 
 // createConnection().then(async connection => {
 
@@ -19,7 +19,7 @@ import connection from "../../config/db-connection";
 
 // }).catch(error => console.log(error));
 
-export const MongoHelper = {
+export const MongoAdapter = {
   async connect (): Promise<Connection> {
     return await createConnection(connection);
   },

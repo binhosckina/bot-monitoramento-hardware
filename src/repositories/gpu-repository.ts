@@ -1,6 +1,5 @@
-import { GPU } from "@/entity/gpu"
+import { GPU } from "@/entities/gpu"
 import { EntityRepository, Repository } from "typeorm"
-import { MongoHelper } from "./mongo-helper"
 
 
 // createConnection().then(async connection => {
@@ -22,12 +21,11 @@ import { MongoHelper } from "./mongo-helper"
 // }).catch(error => console.log(error));
 
 @EntityRepository(GPU)
-export class GPUMongoRepository extends Repository<GPU> {
-  // async add (data: GPU): Promise<GPU> {
-  //   const gpuCollection = await MongoHelper.getCollection('GPUs')
-  //   const result = await gpuCollection.insertOne(data)
-  //   return MongoHelper.map(result.ops[0])
-  // }
+export class GpuRepository extends Repository<GPU> {
+  async add (gpu: GPU): Promise<GPU> {
+    var data = await this.add(gpu)
+    return data
+  }
 
   // async loadAll (): Promise<GPU[]> {
   //   const accountCollection = await MongoHelper.getCollection('GPUs')

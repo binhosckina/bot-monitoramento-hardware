@@ -1,5 +1,5 @@
-import { Bot } from "./model/Bot";
-import { KabumBot } from "./model/KabomBot";
+import { Bot } from "./bot";
+import { KabumBot } from "./kabom-bot";
 
 var Xray = require('x-ray')
 
