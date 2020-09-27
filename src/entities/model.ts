@@ -1,11 +1,11 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, ObjectID, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Link } from "./link";
 import { Product } from "./product";
 
 @Entity()
 export class Model {
-  @PrimaryGeneratedColumn()
-  id: number
+  @ObjectIdColumn()
+  id: ObjectID
 
   @ManyToOne(type => Product, product => product.models)
   product: Product;
