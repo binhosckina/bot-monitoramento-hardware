@@ -9,14 +9,6 @@ import { Router } from 'express'
 import { adaptRoute } from '../adapters/express-route-adapter'
 
 export default (router: Router): void => {
-  // router.post('/surveys', adminAuth, adaptRoute(makeAddSurveyController()))
-  // router.get('/surveys', auth, adaptRoute(makeLoadSurveysController()))
-  console.log("gpus up")
-  router.get('/gpu', middleware, adaptRoute(makeFindAllGpuController()))
-  router.post('/gpu', middleware, adaptRoute(makeAddGpuController()))
-}
-
-function middleware(req, res, next) {
-  console.log("middleware gpus")
-  next()
+  router.get('/gpu', adaptRoute(makeFindAllGpuController()))
+  router.post('/gpu', adaptRoute(makeAddGpuController()))
 }

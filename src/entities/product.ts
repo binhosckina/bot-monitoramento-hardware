@@ -1,9 +1,9 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Model } from "./model";
 
 @Entity()
 export class Product extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @ObjectIdColumn()
   id: number
 
   @Column()

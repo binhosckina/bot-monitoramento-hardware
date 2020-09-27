@@ -1,4 +1,4 @@
-import { noContent } from "../interfaces/response-types";
+import { ok, serverError } from "../interfaces/response-types";
 import { GPU } from "../entities/gpu";
 import { Controller } from "../interfaces/controller";
 import { Request } from "../interfaces/request"
@@ -20,15 +20,13 @@ export class AddGpuController implements Controller {
       // }
       // const { question, answers } = httpRequest.body
       const { name, models } = request.body
+      
       let gpu = new GPU(name, models)
+      await gpu.save()
 
-      // await this.repository.add(gpu)
-      await GPU.save(gpu)
-
-      return noContent()
+      return ok(gpu)
     } catch (error) {
-      // return serverError(error)
-      return error
+      return serverError(error)
     }
   }
 }

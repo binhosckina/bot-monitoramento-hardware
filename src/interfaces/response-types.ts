@@ -1,3 +1,4 @@
+import { ServerError } from '../errors/server-error'
 import { Response } from './response'
 
 export const ok = (data: any): Response => ({
@@ -25,7 +26,7 @@ export const forbidden = (error: Error): Response => ({
   body: error
 })
 
-// export const serverError = (error: Error): Response => ({
-//   statusCode: 500,
-//   body: new ServerError(error.stack)
-// })
+export const serverError = (error: Error): Response => ({
+  statusCode: 500,
+  body: new ServerError(error.stack)
+})
