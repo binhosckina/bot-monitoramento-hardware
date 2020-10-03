@@ -1,9 +1,9 @@
-import { Column, Entity, ManyToOne, ObjectID, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToOne, ObjectID, ObjectIdColumn, OneToMany } from "typeorm";
 import { Link } from "./link";
 import { Product } from "./product";
 
 @Entity()
-export class Model {
+export class Model extends BaseEntity {
   @ObjectIdColumn()
   id: ObjectID
 

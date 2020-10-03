@@ -1,3 +1,4 @@
+import { ValidationError } from 'class-validator'
 import { ServerError } from '../errors/server-error'
 import { Response } from './response'
 
@@ -14,6 +15,11 @@ export const noContent = (): Response => ({
 export const badRequest = (error: Error): Response => ({
   statusCode: 400,
   body: error
+})
+
+export const validationError = (errors: ValidationError[]): Response => ({
+  statusCode: 400,
+  body: errors
 })
 
 // export const unauthorized = (): Response => ({

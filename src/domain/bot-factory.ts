@@ -1,19 +1,14 @@
+import { Store } from "../entities/store";
 import { Bot } from "./bot";
-import { KabumBot } from "./kabom-bot";
+import { makeKabumBot } from "./kabum-bot-factory";
 
-var Xray = require('x-ray')
-
-export const BotFactory = (store: string): Bot => {
+export const makeBot = (store: Store): Bot => {
   var bot: Bot;
-  const x = Xray();
 
-  switch (store) {
-    case 'Kabum':
-      bot = new KabumBot();
-      break;  
-    default:
-      bot = new KabumBot();
-      break;
+  if (store.name === 'Kabum') {
+    bot = makeKabumBot()
+  } else {
+    throw new Error('Unknow store')
   }
 
   return bot;

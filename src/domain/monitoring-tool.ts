@@ -1,12 +1,30 @@
-import { BotFactory } from "./bot-factory"
+import { History, Link } from "../entities/"
+import { makeBot } from "./bot-factory"
 
 export class MonitoringTool {
-  run(): void {
+  constructor() {  }
 
-    const bot = BotFactory('Kabum')
-    bot.execute('https://www.kabum.com.br/produto/96491/cooler-para-processador-cooler-master-intel-amd-masterair-ma410p-map-t4pn-220pc-r1')
-    .then(res => {
-      console.log(res)
+  start() {
+    this.run()
+  }
+
+  async run(): Promise<void> {
+    let links = await Link.find()
+    links.forEach(link => {
+      const bot = makeBot(link.store)
+      bot.execute(link)
+      .then(data => {
+        console.log(data)
+        this.save(link, data)
+      })
     })
+  }
+
+  private async save(link: Link, data: number) {
+    let history = new History()
+    history.date = new Date()
+    history.value = data
+    history.link = link
+    await history.save()
   }
 }

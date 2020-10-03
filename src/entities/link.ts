@@ -1,10 +1,11 @@
-import { Column, Entity, ManyToOne, ObjectID, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, ObjectID, ObjectIdColumn, OneToMany } from "typeorm";
 import { Model } from "./model";
 import { History } from "./history";
 import { Store } from "./store";
+import { DefaultEntity } from "./default-entity";
 
 @Entity()
-export class Link {
+export class Link extends DefaultEntity {
   @ObjectIdColumn()
   id: ObjectID
 

@@ -1,3 +1,5 @@
+import { Link } from "../entities/link";
+
 var Xray = require('x-ray')
 
 export abstract class Bot {
@@ -11,7 +13,16 @@ export abstract class Bot {
     this.x = Xray();
   }
 
-  execute(url: string): Promise<any> {
-    return this.x(url, this.scope, this.selector)
+  async execute(link: Link): Promise<number> {
+    return await this.format(this.x(link.uri, this.scope, this.selector))
+  }
+
+  format(data: string): number {
+    try {
+      return Number.parseFloat(data)
+    }
+    catch (e) {
+      throw new Error(`Cannot parse "${data}" to float`); 
+    }
   }
 }
