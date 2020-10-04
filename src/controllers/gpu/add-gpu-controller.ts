@@ -1,9 +1,9 @@
-import { badRequest, ok, serverError } from "../interfaces/response-types";
-import { GPU } from "../entities/gpu";
-import { Controller } from "../interfaces/controller";
-import { Request } from "../interfaces/request"
-import { Response } from "../interfaces/response"
-import { Validator } from "./validator";
+import { badRequest, ok, serverError, validationError } from "../../interfaces/response-types";
+import { GPU } from "../../entities/gpu";
+import { Controller } from "../../interfaces/controller";
+import { Request } from "../../interfaces/request"
+import { Response } from "../../interfaces/response"
+import { Validator } from "../validator";
 // import { Controller, HttpRequest, HttpResponse, Validation, AddSurvey } from './add-survey-controller-protocols'
 
 export class AddGpuController implements Controller {
@@ -18,7 +18,7 @@ export class AddGpuController implements Controller {
 
       const errors = await this.validator.validate(gpu)
 
-      if (errors.length > 0) return badRequest(new Error(errors[0].toString()))
+      if (errors.length > 0) return validationError(errors)
 
       await gpu.save()
 

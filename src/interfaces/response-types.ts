@@ -19,7 +19,12 @@ export const badRequest = (error: Error): Response => ({
 
 export const validationError = (errors: ValidationError[]): Response => ({
   statusCode: 400,
-  body: errors
+  body: new Error(errors[0].toString())
+})
+
+export const notFoundError = (): Response => ({
+  statusCode: 400,
+  body: new Error("Item not found")
 })
 
 // export const unauthorized = (): Response => ({
