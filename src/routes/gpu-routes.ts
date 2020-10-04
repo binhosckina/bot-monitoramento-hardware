@@ -13,7 +13,7 @@ import {
   makeFindGpuByIdController 
 } from '../factories/gpu'
 
-export default (router: Router): void => {
+export const gpuRoutes = (router: Router): void => {
   router.get('/gpu', adaptRoute(makeFindAllGpuController()))
   router.get('/gpu/:id', adaptRoute(makeFindGpuByIdController()))
   router.post('/gpu', adaptRoute(makeAddGpuController()))
