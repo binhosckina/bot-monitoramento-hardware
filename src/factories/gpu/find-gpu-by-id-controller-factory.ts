@@ -1,4 +1,4 @@
-import { FindGpuByIdController } from "../../controllers/gpu/find-gpu-by-id-controller";
+import { FindGpuByIdController } from "../../controllers/gpu";
 import { Controller } from "../../interfaces/controller";
 
 export const makeFindGpuByIdController = (): Controller => {

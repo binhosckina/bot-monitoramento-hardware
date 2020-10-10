@@ -1,4 +1,4 @@
-import { EditGpuController } from "../../controllers/gpu/edit-gpu-controller";
+import { EditGpuController } from "../../controllers/gpu";
 import { Controller } from "../../interfaces/controller";
 import { makeValidator } from "../validator-factory";
 

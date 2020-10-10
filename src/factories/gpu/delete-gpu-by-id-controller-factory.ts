@@ -1,4 +1,4 @@
-import { DeleteGpuByIdController } from "../../controllers/gpu/delete-gpu-by-id-controller";
+import { DeleteGpuByIdController } from "../../controllers/gpu";
 import { Controller } from "../../interfaces/controller";
 
 export const makeDeleteGpuByIdController = (): Controller => {
