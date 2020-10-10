@@ -4,6 +4,14 @@ import { Product } from "./product";
 
 @Entity()
 export class Model extends BaseEntity {
+  constructor(name: string, manufacturer: string, product: Product, links: Link[]) {
+    super()
+    this.name = name
+    this.manufacturer = manufacturer
+    this.product = product
+    this.links = links
+  }
+
   @ObjectIdColumn()
   id: ObjectID
 
