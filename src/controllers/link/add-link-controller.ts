@@ -3,7 +3,7 @@ import { Controller } from "../../interfaces/controller";
 import { Request } from "../../interfaces/request"
 import { Response } from "../../interfaces/response"
 import { Validator } from "../validator";
-import { Link, Store } from "../../entities";
+import { Link, Model, Store } from "../../entities";
 
 export class AddLinkController implements Controller {
   constructor (
@@ -12,11 +12,12 @@ export class AddLinkController implements Controller {
 
   async handle (request: Request): Promise<Response> {
     try {
-      const { model, store, uri, history } = request.body
+      const { modelDto, storeDto, uri, history } = request.body
 
-      const s = await Store.findOne(store?.id)
+      const store = await Store.findOne(storeDto?.id)
+      const model = await Model.findOne(modelDto?.id)
 
-      let link = new Link(model, s, uri, history)
+      let link = new Link(uri, model, store, history ?? undefined)
 
       const errors = await this.validator.validate(link)
 
