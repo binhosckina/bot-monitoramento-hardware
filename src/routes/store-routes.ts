@@ -8,7 +8,7 @@ import {
   makeFindStoreByIdController 
 } from '../factories/store'
 
-export const storeRoutes = (router: Router): void => {
+export const setupStoreRoutes = (router: Router): void => {
   router.get('/store', adaptRoute(makeFindAllStoreController()))
   router.get('/store/:id', adaptRoute(makeFindStoreByIdController()))
   router.post('/store', adaptRoute(makeAddStoreController()))

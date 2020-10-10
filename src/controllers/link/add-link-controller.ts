@@ -3,8 +3,7 @@ import { Controller } from "../../interfaces/controller";
 import { Request } from "../../interfaces/request"
 import { Response } from "../../interfaces/response"
 import { Validator } from "../validator";
-import { Link } from "../../entities";
-// import { Controller, HttpRequest, HttpResponse, Validation, AddSurvey } from './add-survey-controller-protocols'
+import { Link, Store } from "../../entities";
 
 export class AddLinkController implements Controller {
   constructor (
@@ -14,7 +13,10 @@ export class AddLinkController implements Controller {
   async handle (request: Request): Promise<Response> {
     try {
       const { model, store, uri, history } = request.body
-      let link = new Link(model, store, uri, history)
+
+      const s = await Store.findOne(store?.id)
+
+      let link = new Link(model, s, uri, history)
 
       const errors = await this.validator.validate(link)
 
