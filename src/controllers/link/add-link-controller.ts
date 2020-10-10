@@ -3,7 +3,7 @@ import { Controller } from "../../interfaces/controller";
 import { Request } from "../../interfaces/request"
 import { Response } from "../../interfaces/response"
 import { Validator } from "../validator";
-import { Link, Model, Store } from "../../entities";
+import { GPUModel, Link, Model, Store } from "../../entities";
 
 export class AddLinkController implements Controller {
   constructor (
@@ -12,12 +12,12 @@ export class AddLinkController implements Controller {
 
   async handle (request: Request): Promise<Response> {
     try {
-      const { modelDto, storeDto, uri, history } = request.body
+      const { modelDto, storeDto, url, history } = request.body
 
       const store = await Store.findOne(storeDto?.id)
-      const model = await Model.findOne(modelDto?.id)
+      const model = await GPUModel.findOne(modelDto?.id)
 
-      let link = new Link(uri, model, store, history ?? undefined)
+      let link = new Link(url, model, store, history ?? undefined)
 
       const errors = await this.validator.validate(link)
 

@@ -3,13 +3,13 @@ import { Model } from "./model";
 import { History } from "./history";
 import { Store } from "./store";
 import { DefaultEntity } from "./default-entity";
-import { IsFQDN, IsNotEmpty, IsOptional } from "class-validator";
+import { IsNotEmpty, IsOptional, IsUrl } from "class-validator";
 
 @Entity()
 export class Link extends DefaultEntity {
-  constructor(uri: string, model: Model, store: Store, history?: History[]) {
+  constructor(url: string, model: Model, store: Store, history?: History[]) {
     super()
-    this.uri = uri
+    this.url = url
     this.model = model
     this.store = store
     this.history = history
@@ -27,8 +27,8 @@ export class Link extends DefaultEntity {
   store: Store
 
   @Column()
-  @IsFQDN()
-  uri: string
+  @IsUrl()
+  url: string
 
   @OneToMany(type => History, history => history.link)
   @IsOptional()

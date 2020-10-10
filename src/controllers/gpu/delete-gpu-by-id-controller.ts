@@ -19,8 +19,6 @@ export class DeleteGpuByIdController implements Controller {
 
       if (!gpu) return notFoundError()
 
-      console.table(gpu)
-
       await GPU.delete(gpu)
 
       return noContent()
