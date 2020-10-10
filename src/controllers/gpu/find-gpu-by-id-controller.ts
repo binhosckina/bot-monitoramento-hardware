@@ -1,9 +1,8 @@
-import { badRequest, notFoundError, ok, serverError } from "../../interfaces/response-types";
-import { GPU } from "../../entities/gpu";
+import { badRequest, ok, serverError } from "../../interfaces/response-types";
+import { GPU } from "../../entities";
 import { Controller } from "../../interfaces/controller";
 import { Request } from "../../interfaces/request"
 import { Response } from "../../interfaces/response"
-// import { Controller, HttpRequest, HttpResponse, Validation, AddSurvey } from './add-survey-controller-protocols'
 
 export class FindGpuByIdController implements Controller {
   constructor (

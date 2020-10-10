@@ -1,4 +1,4 @@
-import { AddLinkController } from "../../controllers";
+import { AddLinkController } from "../../controllers/link";
 import { Controller } from "../../interfaces/controller";
 import { makeValidator } from "../validator-factory";
 

@@ -1,4 +1,4 @@
-import { FindStoreByIdController } from "../../controllers/";
+import { FindStoreByIdController } from "../../controllers/store";
 import { Controller } from "../../interfaces/controller";
 
 export const makeFindStoreByIdController = (): Controller => {

@@ -1,5 +1,5 @@
 import { badRequest, noContent, notFoundError, serverError } from "../../interfaces/response-types";
-import { GPU } from "../../entities/gpu";
+import { GPU } from "../../entities";
 import { Controller } from "../../interfaces/controller";
 import { Request } from "../../interfaces/request"
 import { Response } from "../../interfaces/response"

@@ -1,4 +1,4 @@
-import { EditStoreController } from "../../controllers";
+import { EditStoreController } from "../../controllers/store";
 import { Controller } from "../../interfaces/controller";
 import { makeValidator } from "../validator-factory";
 
