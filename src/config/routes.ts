@@ -1,6 +1,6 @@
 import { Express, Router } from 'express'
 var express = require('express')
-import { setupGpuModelRoutes, setupGpuRoutes, setupLinkRoutes, setupStoreRoutes } from "../routes/";
+import { setupGpuModelRoutes, setupGpuRoutes, setupHistoryRoutes, setupLinkRoutes, setupStoreRoutes } from "../routes/";
 
 export default (app: Express): void => {
   const router = Router()
@@ -11,6 +11,7 @@ export default (app: Express): void => {
   setupStoreRoutes(router)
   setupLinkRoutes(router)
   setupGpuModelRoutes(router)
+  setupHistoryRoutes(router)
 
   app.use(router)
 }
